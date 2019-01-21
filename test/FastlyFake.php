@@ -32,7 +32,7 @@ class FastlyFake implements FastlyInterface
     {
         $this->urls = (!is_array($url)) ? [$url] : $url;
 
-        Assert::assertEquals(count($url), $this->numberOfCalls());
+        Assert::assertEquals(count($this->urls), $this->numberOfCalls());
     }
 
     private function numberOfCalls()
