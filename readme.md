@@ -26,7 +26,7 @@ php artisan vendor:publish --provider="Erashdan\LaravelFastly\FastlyServiceProvi
 
 And add the key used for the hashing in .env file
 ```dotenv
-HASHID_KEY=FASTLY_API_KEY
+FASTLY_API_KEY=GENERATE_KEY_FROM_FASTLY_ACCOUNT
 ```
 
 ## Usage
