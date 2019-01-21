@@ -1,4 +1,4 @@
-# Fastly Laravel [![Build Status](https://travis-ci.org/erashdan/laravelfastly.svg?branch=master)](https://travis-ci.org/erashdan/laravelfastly)
+# Fastly Laravel [![Build Status](https://travis-ci.org/erashdan/laravel-fastly.svg?branch=master)](https://travis-ci.org/erashdan/laravel-fastly)
 
 * [Installation](#installation)
 * [Usage](#usage)
