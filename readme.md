@@ -31,10 +31,9 @@ HASHID_KEY=FASTLY_API_KEY
 
 ## Usage
 You can clear the cache from fastly using the `Fastly` Facade
+
 ```php
 Fastly::purgeUrl('get-url')
-//OR
-Fastly::purgeUrl('post-url', 'POST')
 ```
 
 The facade also accept an array of URIs to be cleared
@@ -54,4 +53,5 @@ composer test
 ```.todo
 - [x] Build first version.
 - [] Purge by service ID
+- [] Call fastly `call` wrapper.
 ```
