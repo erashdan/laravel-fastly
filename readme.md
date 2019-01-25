@@ -32,6 +32,7 @@ FASTLY_API_KEY=GENERATE_KEY_FROM_FASTLY_ACCOUNT
 ## Usage
 You can clear the cache from fastly using the `Fastly` Facade
 
+### Purge by URL
 ```php
 Fastly::purgeUrl('get-url')
 ```
@@ -39,6 +40,21 @@ Fastly::purgeUrl('get-url')
 The facade also accept an array of URIs to be cleared
 ```php
 Fastly::purgeUrl(['first-url', 'second-url'])
+```
+
+### Purge by service id
+First you should define services array in configuration `fastly.php`
+
+```php
+'services' => [
+    'main' => 'xDp52XsJ5dXLp',
+]
+```
+
+You can call `fastly` Facades to purge all files by service name.
+
+```php
+Fastly::purgeService('main');
 ```
 
 ### Testing
@@ -52,6 +68,6 @@ composer test
 ## TODO 
 ```.todo
 - [x] Build first version.
-- [] Purge by service ID
+- [x] Purge by service ID
 - [] Call fastly `call` wrapper.
 ```

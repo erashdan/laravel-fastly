@@ -18,9 +18,21 @@ return [
      | Fastly API Configuration
      |--------------------------------------------------------------------------
      |
-     | This array will be passed to the Fastly.
+     | The API key should be created using Fastly interface
      |
      */
     'api_key' => env('FASTLY_API_KEY'),
+
+    /*
+     |--------------------------------------------------------------------------
+     | Fastly Services API
+     |--------------------------------------------------------------------------
+     |
+     | This array for all your services IDs in fastly.
+     |
+     */
+
+    'services' => []
+
 
 ];

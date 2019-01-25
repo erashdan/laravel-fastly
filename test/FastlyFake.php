@@ -4,7 +4,7 @@ namespace Erashdan\LaravelFastly\Test;
 
 use Erashdan\LaravelFastly\FastlyInterface;
 use Fastly\FastlyFake as FastlyFaker;
-use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Assert as PHPUnit;
 
 class FastlyFake implements FastlyInterface
 {
@@ -17,7 +17,7 @@ class FastlyFake implements FastlyInterface
         $this->faker = new FastlyFaker();
     }
 
-    public function purgeUrl($url,$options = [])
+    public function purgeUrl($url, $options = [])
     {
         $this->urls = (!is_array($url)) ? [$url] : $url;
 
@@ -28,11 +28,27 @@ class FastlyFake implements FastlyInterface
         return true;
     }
 
-    public function assertCall($url)
+    public function assertCall()
     {
-        $this->urls = (!is_array($url)) ? [$url] : $url;
+        PHPUnit::assertEquals(count($this->urls), $this->numberOfCalls());
+    }
 
-        Assert::assertEquals(count($this->urls), $this->numberOfCalls());
+    public function purgeService($service_name)
+    {
+        $service_id = $this->getService($service_name);
+
+        $this->faker->purgeAll($service_id);
+    }
+
+
+    public function getService($service_name)
+    {
+        return str_random(22);
+    }
+
+    public function assertPurgeService()
+    {
+        PHPUnit::assertEquals(1, $this->numberOfCalls());
     }
 
     private function numberOfCalls()
@@ -46,6 +62,5 @@ class FastlyFake implements FastlyInterface
 
         return $number;
     }
-
 
 }

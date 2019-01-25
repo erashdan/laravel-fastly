@@ -24,7 +24,16 @@ class FastlyTest extends TestCase
 
         Fastly::purgeUrl($urls);
 
-        Fastly::assertCall($urls);
+        Fastly::assertCall();
     }
 
+
+    /** @test **/
+    public function fastly_can_remove_purge_by_service_id() {
+        Fastly::fake();
+
+        Fastly::purgeService('ANY_SERVICE');
+
+        Fastly::assertPurgeService();
+    }
 }

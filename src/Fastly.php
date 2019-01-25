@@ -43,4 +43,28 @@ class Fastly implements FastlyInterface
 
         return true;
     }
+
+    /**
+     * @param $service_name
+     *
+     * Get service id by service name
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     * @throws \Exception
+     */
+    public function getService($service_name)
+    {
+        if (!$service_id = config('fastly.services.' . $service_name)) {
+            throw new \Exception('Unable to find service');
+        }
+
+        return $service_id;
+    }
+
+    public function purgeService($service_name)
+    {
+        $this->fastly->purgeAll(
+            $this->getService($service_name)
+        );
+    }
 }
