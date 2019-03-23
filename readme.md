@@ -69,5 +69,6 @@ composer test
 ```.todo
 - [x] Build first version.
 - [x] Purge by service ID
-- [] Call fastly `call` wrapper.
+- [x] Call fastly `call` wrapper.
+- [] Implement `call` using URI
 ```

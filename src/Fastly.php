@@ -61,10 +61,37 @@ class Fastly implements FastlyInterface
         return $service_id;
     }
 
+    /**
+     * Purge all cached files by service name
+     *
+     * @param $service_name
+     * @throws \Exception
+     */
     public function purgeService($service_name)
     {
         $this->fastly->purgeAll(
             $this->getService($service_name)
         );
+    }
+
+    /**
+     * Request fastly to call URL which will cache endpoint.
+     *
+     * @param $url
+     */
+    public function callUrl($url)
+    {
+        $this->fastly->send('GET', $url);
+    }
+
+    /**
+     * Request fastly to purge url, then re-cache it by "GET" request
+     *
+     * @param $url
+     */
+    public function purgeAndCall($url)
+    {
+        $this->purgeUrl($url);
+        $this->callUrl($url);
     }
 }

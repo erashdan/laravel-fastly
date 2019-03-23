@@ -11,6 +11,7 @@ class FastlyFake implements FastlyInterface
 
     protected $calls = 0;
     protected $urls = [];
+    protected $callUrl;
 
     public function __construct()
     {
@@ -49,6 +50,27 @@ class FastlyFake implements FastlyInterface
     public function assertPurgeService()
     {
         PHPUnit::assertEquals(1, $this->numberOfCalls());
+    }
+
+    public function callUrl($url)
+    {
+        $this->faker->send('GET', $url);
+    }
+
+    public function assertCallUrl($url)
+    {
+        PHPUnit::assertEquals($url, $this->faker->getCall(0)[2]);
+    }
+
+    public function purgeAndCall($url)
+    {
+        $this->purgeUrl($url);
+        $this->callUrl($url);
+    }
+
+    public function assertPurgeAndCall()
+    {
+        PHPUnit::assertEquals(2, $this->numberOfCalls());
     }
 
     private function numberOfCalls()

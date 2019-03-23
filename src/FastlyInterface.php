@@ -10,4 +10,8 @@ interface FastlyInterface
     public function purgeUrl($url, $options = []);
 
     public function purgeService($service_id);
+
+    public function callUrl($url);
+
+    public function purgeAndCall($url);
 }
