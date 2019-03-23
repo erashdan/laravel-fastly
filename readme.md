@@ -56,6 +56,17 @@ You can call `fastly` Facades to purge all files by service name.
 ```php
 Fastly::purgeService('main');
 ```
+### Call method
+You can request fastly service to cache a specific url by using `call` method
+```php
+Fastly::callUrl('https://erashdan.com');
+```
+
+### Purge and call
+You can purge specific url and re-cache (`call`) it by using `purgeAndCall` method
+```php
+Fastly::purgeAndCall('https://erashdan.com');
+```
 
 ### Testing
 ``` bash
